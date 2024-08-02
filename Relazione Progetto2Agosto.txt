@@ -1,0 +1,27 @@
+L'azienda GHOST SECURITY dispone di quattro teams specializzati dislocati in 4 uffici e  formati da 4 dipendenti, ciascuno dedicato a un aspetto della cybersecurity:
+
+Cyber Security Analysts ={Marco, Giulio, Claudia,Marta}
+Network Security Experts= {Martina, Benedetta, Arianna, Francesco}
+Penetration Testing Specialists={Alfonso, Vincenzo, Eveline, Ariel}
+Incident Response Specialists={Paolo, Kyle, Aaron, Jennifer}
+
+
+Il management ha deciso di formare team interfunzionali, ciascuno composto da un membro di ogni ufficio per effettuare dei test di attacco e difesa.
+I gruppi sono così formati:
+
+TeamA = {Marco, Martina, Alfonso, Paolo}
+TeamB = {Giulio, Vincenzo, Benedetta, Kyle}
+TeamC= {Claudia, Eveline, Arianna, Aaron}
+TeamD= {Marta, Ariel, Francesco, Jennifer}
+
+Tuttavia, per ragioni logistiche, i dipendenti non possono spostarsi fisicamente tra gli uffici.
+
+Obiettivo:
+Creare un ambiente di rete che permetta una collaborazione efficace tra i membri dei team distribuiti, mantenendo al contempo un elevato livello di sicurezza.
+
+Soluzione Proposta:
+Implementare quattro VLAN (Virtual Local Area Networks) distinte per facilitare la comunicazione sicura tra i membri dei team distribuiti.
+
+Ho collegato i computer di ciascun ufficio a uno switch(Switch0,Switch1,Switch2,Switch3) e ho configurato per ciascuno 4 vlan: teamA,teamB,teamC,teamD distribuite rispettivamente su interfaccia fastethernet0/1,fastethernet0/2,fastethernet0/3 e fastethernet0/4 settate quindi in Access.
+Ho collegato quindi i 4 switch ad un ulteriore switch(Switch4) e ho settato l'interfaccia fastethernet0/5 degli switch dei 4 uffici a trunk in modo che possa passare tutto il traffico delle VLAN.
+Infine ho settato le interfacce dello switch4 a trunk per permettere il passaggio di tutto il traffico delle VLAN.

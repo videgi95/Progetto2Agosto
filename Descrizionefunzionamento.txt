@@ -1,0 +1,17 @@
+Descrizione del processo di invio del pacchetto dal Pc con IP 192.168.1.10(Marco) al Pc con IP 192.168.1.50(Alfonso):
+
+Preparazione del pacchetto e Verifica della rete di destinazione:
+VLAN Tag: Oltre alle informazioni standard(pacchetto IP di destinazione nell'header), il pacchetto viene taggato con il VLAN ID a cui appartiene sia il mittente che il destinatario. Questo tag indica a quale segmento logico della       rete appartiene il traffico.
+Verifica: Il pc 192.168.1.10 verifica non solo che l'indirizzo IP di destinazione sia sulla stessa rete, ma anche che appartenga alla stessa VLAN.
+
+Risoluzione dell'indirizzo MAC:
+    ARP con VLAN Tag: Il broadcast ARP inviato dal Pc 192.168.1.10 include il VLAN ID per assicurarsi che solo i dispositivi nella stessa VLAN rispondano.
+    Tabella ARP con VLAN: Lo switch mantiene una tabella ARP separata per ogni VLAN, associando gli indirizzi IP e MAC ai rispettivi VLAN ID.
+
+Incapsulamento e Invio allo switch:
+    Frame Ethernet con VLAN Tag: Il pacchetto IP viene incapsulato in un frame Ethernet che include il VLAN tag.
+    Inoltro basato su VLAN: Lo switch esamina sia l'indirizzo MAC di destinazione che il VLAN tag del frame.
+
+Inoltro dello switch:
+    Tabella MAC e VLAN: Lo switch consulta una tabella che associa gli indirizzi MAC, i VLAN ID e le porte di uscita.
+    Inoltro verso la VLAN corretta: Se trova una corrispondenza, inoltra il frame solo alla porta associata alla VLAN di destinazione.
